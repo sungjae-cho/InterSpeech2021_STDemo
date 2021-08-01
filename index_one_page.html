@@ -1,0 +1,2026 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <style>
+      table {
+        border-collapse: collapse;
+      }
+      table, td, th {
+        border: 1px solid black;
+        text-align: center;
+      }
+      .speaker_cell {
+        font-weight: bold;
+        text-align: left;
+        background-color:greenyellow;
+      }
+      .emotion_cell {
+        background-color:lightpink;
+        align:center;
+      }
+      .sentence_cell {
+        background-color:yellow;
+      }
+      .notrainingdata_cell {
+        background-color:skyblue;
+      }
+      .row {
+        display: table;
+      }
+      .column {
+        display: table-cell;
+        padding: 10px;
+      }
+      @media (max-width: 512px) { /*breakpoint*/
+        .column {
+          display: block;
+        }
+      }
+    </style>
+    <script>
+      function play(path) {
+        var player = document.getElementById('player');
+        player.src = path;
+        player.play();
+      }
+    </script>
+    <title>Demo page for "Multi-speaker Emotional Text-to-speech Synthesizer"</title>
+  </head>
+  <body>
+    <audio hidden controls="" id="player"></audio>
+    <header>
+      <h1>Demo page for "Multi-speaker Emotional Text-to-speech Synthesizer"</h1>
+    </header>
+    <h2>Brief information</h2>
+    <ul>
+      <li><b>Title</b>: Multi-speaker Emotional Text-to-speech Synthesizer</li>
+      <li><b>Authors</b>: Sungjae Cho, Soo-Young Lee</li>
+      <li><b>Conference</b>: <a href="https://www.interspeech2021.org/">INTERSPEECH 2021</a></li>
+      <li><b>Session</b>: <a href="https://www.interspeech2021.org/call-for-show-and-tell">Show and Tell demonstation</a></li>
+      <li><b>Presentation time</b>: 16:00-18:00 (GMT+2) & 23:00-01:00 (GMT+9), September 1, 2021</li>
+      <li><b>Paper</b>: <a href="https://www.interspeech2021.org/">Link</a></li></li>
+      <li>
+        <b>Paper Abstract</b>:
+        We present a methodology to train our multi-speaker emotional text-to-speech synthesizer that can express speech for 10 speakers' 7 different emotions.
+        All silences from audio samples are removed prior to learning.
+        This results in fast learning by our model.
+        Curriculum learning is applied to train our model efficiently.
+        Our model is first trained with a large single-speaker neutral dataset, and then trained with neutral speech from all speakers.
+        Finally, our model is trained using datasets of emotional speech from all speakers.
+        In each stage, training samples of each speaker-emotion pair have equal probability to appear in mini-batches.
+        Through this procedure, our model can synthesize speech for all targeted speakers and emotions.
+        Our synthesized audio sets are available on our web page.
+      </li>
+    </ul>
+    <h2>Brief introduction to demo</h2>
+    <p>
+      In the following demonstration, audios synsthesized by our multi-speaker emotional text-to-speech synthesizer are demonstrated.
+      Our synthesizer can synthesize speech
+        for 7 emotions (neutral, angry, disgusted, fearful, happy, sad, surprised) voices
+        across 10 speakers (5 females, 5 males).
+    </p>
+    <p>
+      We recognize emotion from speech, depending on what textual content is contained.
+      Thus, for each emotion, we present 3 sentences containing content of a particular emotion.
+      For neutral emotion, we synthesized 3 sentences for all possible emotion-speaker pairs.
+      For anoter emotion, we synthesized 3 sentences for neutral and that particular emotion accross all speakers.
+    </p>
+    <p>
+      For the fisrt demonstration, synthesized utterances of neutral sentences are presented.
+      What we want you to pay attention to is how varying given audios are across emotions and speakers.
+      First, you listen to a neutral audio, and then an emotional audio.
+      Check out the <b>blue boxes</b> where audios were synthesized even without training supervision.
+      Those expressions were transferred from other speakers' expressions.
+    </p>
+    <p>
+        You can move onto anothe location to listen audios for another emotional sentences,
+          through the following hyperlinks.
+    </p>
+
+    <p>
+      [<a href="#neutral"><b>Neutral sentences</b></a>]
+      [<a href="#angry"><b>Angry sentences</b></a>]
+      [<a href="#disgusted"><b>Disgusted sentences</b></a>]
+      [<a href="#fearful"><b>Fearful sentences</b></a>]
+      [<a href="#happy"><b>Happy sentences</b></a>]
+      [<a href="#sad"><b>Sad sentences</b></a>]
+      [<a href="#surprised"><b>Surprised sentences</b></a>]
+    </p>
+
+    <p>
+      [<a href="index.html"><b>Separate pages view</b></a>]
+    </p>
+
+    <h2 id="neutral">Neutral sentences</h2>
+
+    <div class="row">
+      <div class="column">
+
+        <h3>Neutral sentence 1</h3>
+
+        <table border="1">
+          <tr>
+            <th class="sentence_cell">Sentence</th>
+            <td class="sentence_cell" colspan="7">이 음성합성기는 열 명의 화자와 일곱 개의 감정을 합성할 수 있습니다.</td>
+          </tr>
+          <tr>
+            <th class="sentence_cell">Pronouncing</th>
+            <td class="sentence_cell" colspan="7">i eumseonghabseong-gineun yeol myeong-ui hwajawa ilgob gaeui gamjeong-eul habseonghal su issseubnida.</td>
+          </tr>
+          <tr>
+            <th class="sentence_cell">Meaning</th>
+            <td class="sentence_cell" colspan="7">This speech synthesizer can synthesize for ten speakers and seven emotions.</td>
+          </tr>
+          <tr>
+            <th class="speaker_cell" rowspan=2>Speaker</th>
+            <th class="emotion_cell" colspan="7">Emotion</th>
+          </tr>
+          <tr>
+            <th class="emotion_cell">Neutral</th>
+            <th class="emotion_cell">Anger</th>
+            <th class="emotion_cell">Disgust</th>
+            <th class="emotion_cell">Fear</th>
+            <th class="emotion_cell">Happiness</th>
+            <th class="emotion_cell">Sadness</th>
+            <th class="emotion_cell">Surprise</th>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts-30f</td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts-30f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts-30f_angry.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts-30f_disgusted.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts-30f_fearful.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts-30f_happy.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts-30f_sad.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts-30f_surprised.wav').play()">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts-30m</td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts-30m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts-30m_angry.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts-30m_disgusted.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts-30m_fearful.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts-30m_happy.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts-30m_sad.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts-30m_surprised.wav').play()">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-20m</td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts2-20m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts2-20m_angry.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts2-20m_disgusted.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts2-20m_fearful.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts2-20m_happy.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts2-20m_sad.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts2-20m_surprised.wav').play()">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-30f</td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts2-30f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts2-30f_angry.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts2-30f_disgusted.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts2-30f_fearful.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts2-30f_happy.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts2-30f_sad.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts2-30f_surprised.wav').play()">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-40m</td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts2-40m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts2-40m_angry.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts2-40m_disgusted.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts2-40m_fearful.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts2-40m_happy.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts2-40m_sad.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts2-40m_surprised.wav').play()">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-50f</td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts2-50f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts2-50f_angry.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts2-50f_disgusted.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts2-50f_fearful.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts2-50f_happy.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts2-50f_sad.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts2-50f_surprised.wav').play()">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-50m</td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts2-50m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts2-50m_angry.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts2-50m_disgusted.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts2-50m_fearful.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts2-50m_happy.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts2-50m_sad.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts2-50m_surprised.wav').play()">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-60f</td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts2-60f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts2-60f_angry.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts2-60f_disgusted.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts2-60f_fearful.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts2-60f_happy.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts2-60f_sad.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts2-60f_surprised.wav').play()">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts3-f</td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts3-f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts3-f_angry.wav').play()">Play</button></td>
+            <td class="notrainingdata_cell"><button onclick="play('audios/sentence-neutral-01_ketts3-f_disgusted.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts3-f_fearful.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts3-f_happy.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts3-f_sad.wav').play()">Play</button></td>
+            <td class="notrainingdata_cell"><button onclick="play('audios/sentence-neutral-01_ketts3-f_surprised.wav').play()">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts3-m</td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts3-m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts3-m_angry.wav').play()">Play</button></td>
+            <td class="notrainingdata_cell"><button onclick="play('audios/sentence-neutral-01_ketts3-m_disgusted.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts3-m_fearful.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts3-m_happy.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-01_ketts3-m_sad.wav').play()">Play</button></td>
+            <td class="notrainingdata_cell"><button onclick="play('audios/sentence-neutral-01_ketts3-m_surprised.wav').play()">Play</button></td>
+          </tr>
+        </table>
+
+      </div>
+      <div class="column">
+
+        <h3>Neutral sentence 2</h3>
+
+        <table border="1">
+          <tr>
+            <th class="sentence_cell">Sentence</th>
+            <td class="sentence_cell" colspan="7">카이스트는 대한민국의 이공계 연구중심대학이다.</td>
+          </tr>
+          <tr>
+            <th class="sentence_cell">Pronouncing</th>
+            <td class="sentence_cell" colspan="7">kaiseuteuneun daehanmingug-ui igong-gye yeongujungsimdaehag-ida.</td>
+          </tr>
+          <tr>
+            <th class="sentence_cell">Meaning</th>
+            <td class="sentence_cell" colspan="7">KAIST is a research-oriented science and engineering university in South Korea.</td>
+          </tr>
+          <tr>
+            <th class="speaker_cell" rowspan=2>Speaker</th>
+            <th class="emotion_cell" colspan="7">Emotion</th>
+          </tr>
+          <tr>
+            <th class="emotion_cell">Neutral</th>
+            <th class="emotion_cell">Anger</th>
+            <th class="emotion_cell">Disgust</th>
+            <th class="emotion_cell">Fear</th>
+            <th class="emotion_cell">Happiness</th>
+            <th class="emotion_cell">Sadness</th>
+            <th class="emotion_cell">Surprise</th>
+          </tr>
+          <tr>
+          <tr>
+            <td class="speaker_cell">ketts-30f</td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts-30f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts-30f_angry.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts-30f_disgusted.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts-30f_fearful.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts-30f_happy.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts-30f_sad.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts-30f_surprised.wav').play()">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts-30m</td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts-30m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts-30m_angry.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts-30m_disgusted.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts-30m_fearful.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts-30m_happy.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts-30m_sad.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts-30m_surprised.wav').play()">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-20m</td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts2-20m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts2-20m_angry.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts2-20m_disgusted.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts2-20m_fearful.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts2-20m_happy.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts2-20m_sad.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts2-20m_surprised.wav').play()">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-30f</td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts2-30f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts2-30f_angry.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts2-30f_disgusted.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts2-30f_fearful.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts2-30f_happy.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts2-30f_sad.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts2-30f_surprised.wav').play()">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-40m</td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts2-40m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts2-40m_angry.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts2-40m_disgusted.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts2-40m_fearful.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts2-40m_happy.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts2-40m_sad.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts2-40m_surprised.wav').play()">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-50f</td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts2-50f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts2-50f_angry.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts2-50f_disgusted.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts2-50f_fearful.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts2-50f_happy.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts2-50f_sad.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts2-50f_surprised.wav').play()">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-50m</td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts2-50m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts2-50m_angry.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts2-50m_disgusted.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts2-50m_fearful.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts2-50m_happy.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts2-50m_sad.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts2-50m_surprised.wav').play()">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-60f</td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts2-60f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts2-60f_angry.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts2-60f_disgusted.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts2-60f_fearful.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts2-60f_happy.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts2-60f_sad.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts2-60f_surprised.wav').play()">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts3-f</td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts3-f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts3-f_angry.wav').play()">Play</button></td>
+            <td class="notrainingdata_cell"><button onclick="play('audios/sentence-neutral-02_ketts3-f_disgusted.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts3-f_fearful.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts3-f_happy.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts3-f_sad.wav').play()">Play</button></td>
+            <td class="notrainingdata_cell"><button onclick="play('audios/sentence-neutral-02_ketts3-f_surprised.wav').play()">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts3-m</td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts3-m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts3-m_angry.wav').play()">Play</button></td>
+            <td class="notrainingdata_cell"><button onclick="play('audios/sentence-neutral-02_ketts3-m_disgusted.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts3-m_fearful.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts3-m_happy.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-02_ketts3-m_sad.wav').play()">Play</button></td>
+            <td class="notrainingdata_cell"><button onclick="play('audios/sentence-neutral-02_ketts3-m_surprised.wav').play()">Play</button></td>
+          </tr>
+        </table>
+
+      </div>
+      <div class="column">
+
+        <h3>Neutral sentence 3</h3>
+
+        <table border="1">
+          <tr>
+            <th class="sentence_cell">Sentence</th>
+            <td class="sentence_cell" colspan="7">이 학회는 음성처리 분야에서 저명하다.</td>
+          </tr>
+          <tr>
+            <th class="sentence_cell">Pronouncing</th>
+            <td class="sentence_cell" colspan="7">i haghoeneun eumseongcheoli bun-ya-eseo jeomyeonghada.</td>
+          </tr>
+          <tr>
+            <th class="sentence_cell">Meaning</th>
+            <td class="sentence_cell" colspan="7">This conference is prominent in the field of speech processing.</td>
+          </tr>
+          <tr>
+            <th class="speaker_cell" rowspan=2>Speaker</th>
+            <th class="emotion_cell" colspan="7">Emotion</th>
+          </tr>
+          <tr>
+            <th class="emotion_cell">Neutral</th>
+            <th class="emotion_cell">Anger</th>
+            <th class="emotion_cell">Disgust</th>
+            <th class="emotion_cell">Fear</th>
+            <th class="emotion_cell">Happiness</th>
+            <th class="emotion_cell">Sadness</th>
+            <th class="emotion_cell">Surprise</th>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts-30f</td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts-30f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts-30f_angry.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts-30f_disgusted.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts-30f_fearful.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts-30f_happy.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts-30f_sad.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts-30f_surprised.wav').play()">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts-30m</td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts-30m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts-30m_angry.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts-30m_disgusted.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts-30m_fearful.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts-30m_happy.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts-30m_sad.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts-30m_surprised.wav').play()">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-20m</td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts2-20m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts2-20m_angry.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts2-20m_disgusted.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts2-20m_fearful.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts2-20m_happy.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts2-20m_sad.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts2-20m_surprised.wav').play()">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-30f</td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts2-30f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts2-30f_angry.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts2-30f_disgusted.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts2-30f_fearful.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts2-30f_happy.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts2-30f_sad.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts2-30f_surprised.wav').play()">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-40m</td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts2-40m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts2-40m_angry.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts2-40m_disgusted.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts2-40m_fearful.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts2-40m_happy.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts2-40m_sad.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts2-40m_surprised.wav').play()">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-50f</td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts2-50f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts2-50f_angry.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts2-50f_disgusted.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts2-50f_fearful.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts2-50f_happy.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts2-50f_sad.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts2-50f_surprised.wav').play()">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-50m</td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts2-50m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts2-50m_angry.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts2-50m_disgusted.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts2-50m_fearful.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts2-50m_happy.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts2-50m_sad.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts2-50m_surprised.wav').play()">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-60f</td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts2-60f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts2-60f_angry.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts2-60f_disgusted.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts2-60f_fearful.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts2-60f_happy.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts2-60f_sad.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts2-60f_surprised.wav').play()">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts3-f</td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts3-f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts3-f_angry.wav').play()">Play</button></td>
+            <td class="notrainingdata_cell"><button onclick="play('audios/sentence-neutral-03_ketts3-f_disgusted.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts3-f_fearful.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts3-f_happy.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts3-f_sad.wav').play()">Play</button></td>
+            <td class="notrainingdata_cell"><button onclick="play('audios/sentence-neutral-03_ketts3-f_surprised.wav').play()">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts3-m</td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts3-m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts3-m_angry.wav').play()">Play</button></td>
+            <td class="notrainingdata_cell"><button onclick="play('audios/sentence-neutral-03_ketts3-m_disgusted.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts3-m_fearful.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts3-m_happy.wav').play()">Play</button></td>
+            <td><button onclick="play('audios/sentence-neutral-03_ketts3-m_sad.wav').play()">Play</button></td>
+            <td class="notrainingdata_cell"><button onclick="play('audios/sentence-neutral-03_ketts3-m_surprised.wav').play()">Play</button></td>
+          </tr>
+        </table>
+
+      </div>
+    </div>
+
+    <p>
+      [<a href="#neutral"><b>Neutral sentences</b></a>]
+      [<a href="#angry"><b>Angry sentences</b></a>]
+      [<a href="#disgusted"><b>Disgusted sentences</b></a>]
+      [<a href="#fearful"><b>Fearful sentences</b></a>]
+      [<a href="#happy"><b>Happy sentences</b></a>]
+      [<a href="#sad"><b>Sad sentences</b></a>]
+      [<a href="#surprised"><b>Surprised sentences</b></a>]
+    </p>
+
+    <h2 id="angry">Angry sentences</h2>
+
+    <div class="row">
+      <div class="column">
+
+        <h3>Angry sentence 1</h3>
+
+        <table border="1">
+          <tr>
+            <th class="sentence_cell">Sentence</th>
+            <td class="sentence_cell" colspan="2">나는 그 행동에 정말 화가 나.</td>
+          </tr>
+          <tr>
+            <th class="sentence_cell">Pronouncing</th>
+            <td class="sentence_cell" colspan="2">naneun geu haengdong-e jeongmal hwaga na.</td>
+          </tr>
+          <tr>
+            <th class="sentence_cell">Meaning</th>
+            <td class="sentence_cell" colspan="2">I'm really angry about that behavior.</td>
+          </tr>
+          <tr>
+            <th class="speaker_cell" rowspan=2>Speaker</th>
+            <th class="emotion_cell" colspan="2">Emotion</th>
+          </tr>
+          <tr>
+            <th class="emotion_cell">Neutral</th>
+            <th class="emotion_cell">Anger</th>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts-30f</td>
+            <td><button onclick="play('audios/sentence-angry-01_ketts-30f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-angry-01_ketts-30f_angry.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts-30m</td>
+            <td><button onclick="play('audios/sentence-angry-01_ketts-30m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-angry-01_ketts-30m_angry.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-20m</td>
+            <td><button onclick="play('audios/sentence-angry-01_ketts2-20m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-angry-01_ketts2-20m_angry.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-30f</td>
+            <td><button onclick="play('audios/sentence-angry-01_ketts2-30f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-angry-01_ketts2-30f_angry.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-40m</td>
+            <td><button onclick="play('audios/sentence-angry-01_ketts2-40m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-angry-01_ketts2-40m_angry.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-50f</td>
+            <td><button onclick="play('audios/sentence-angry-01_ketts2-50f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-angry-01_ketts2-50f_angry.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-50m</td>
+            <td><button onclick="play('audios/sentence-angry-01_ketts2-50m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-angry-01_ketts2-50m_angry.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-60f</td>
+            <td><button onclick="play('audios/sentence-angry-01_ketts2-60f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-angry-01_ketts2-60f_angry.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts3-f</td>
+            <td><button onclick="play('audios/sentence-angry-01_ketts3-f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-angry-01_ketts3-f_angry.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts3-m</td>
+            <td><button onclick="play('audios/sentence-angry-01_ketts3-m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-angry-01_ketts3-m_angry.wav');">Play</button></td>
+          </tr>
+        </table>
+
+      </div>
+      <div class="column">
+
+        <h3>Angry sentence 2</h3>
+
+        <table border="1">
+          <tr>
+            <th class="sentence_cell">Sentence</th>
+            <td class="sentence_cell" colspan="2">당신 때문에 사고날 뻔했잖아요!</td>
+          </tr>
+          <tr>
+            <th class="sentence_cell">Pronouncing</th>
+            <td class="sentence_cell" colspan="2">dangsin ttaemun-e sagonal ppeonhaessjanh-ayo!</td>
+          </tr>
+          <tr>
+            <th class="sentence_cell">Meaning</th>
+            <td class="sentence_cell" colspan="2">I almost had an accident because of you!</td>
+          </tr>
+          <tr>
+            <th class="speaker_cell" rowspan=2>Speaker</th>
+            <th class="emotion_cell" colspan="2">Emotion</th>
+          </tr>
+          <tr>
+            <th class="emotion_cell">Neutral</th>
+            <th class="emotion_cell">Anger</th>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts-30f</td>
+            <td><button onclick="play('audios/sentence-angry-02_ketts-30f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-angry-02_ketts-30f_angry.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts-30m</td>
+            <td><button onclick="play('audios/sentence-angry-02_ketts-30m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-angry-02_ketts-30m_angry.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-20m</td>
+            <td><button onclick="play('audios/sentence-angry-02_ketts2-20m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-angry-02_ketts2-20m_angry.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-30f</td>
+            <td><button onclick="play('audios/sentence-angry-02_ketts2-30f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-angry-02_ketts2-30f_angry.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-40m</td>
+            <td><button onclick="play('audios/sentence-angry-02_ketts2-40m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-angry-02_ketts2-40m_angry.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-50f</td>
+            <td><button onclick="play('audios/sentence-angry-02_ketts2-50f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-angry-02_ketts2-50f_angry.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-50m</td>
+            <td><button onclick="play('audios/sentence-angry-02_ketts2-50m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-angry-02_ketts2-50m_angry.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-60f</td>
+            <td><button onclick="play('audios/sentence-angry-02_ketts2-60f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-angry-02_ketts2-60f_angry.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts3-f</td>
+            <td><button onclick="play('audios/sentence-angry-02_ketts3-f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-angry-02_ketts3-f_angry.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts3-m</td>
+            <td><button onclick="play('audios/sentence-angry-02_ketts3-m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-angry-02_ketts3-m_angry.wav');">Play</button></td>
+          </tr>
+        </table>
+
+      </div>
+      <div class="column">
+
+        <h3>Angry sentence 3</h3>
+
+        <table border="1">
+          <tr>
+            <th class="sentence_cell">Sentence</th>
+            <td class="sentence_cell" colspan="2">너 진짜 오늘 죽어볼래?</td>
+          </tr>
+          <tr>
+            <th class="sentence_cell">Pronouncing</th>
+            <td class="sentence_cell" colspan="2">neo jinjja oneul jug-eobollae?</td>
+          </tr>
+          <tr>
+            <th class="sentence_cell">Meaning</th>
+            <td class="sentence_cell" colspan="2">Do you really want to die today?</td>
+          </tr>
+          <tr>
+            <th class="speaker_cell" rowspan=2>Speaker</th>
+            <th class="emotion_cell" colspan="2">Emotion</th>
+          </tr>
+          <tr>
+            <th class="emotion_cell">Neutral</th>
+            <th class="emotion_cell">Anger</th>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts-30f</td>
+            <td><button onclick="play('audios/sentence-angry-03_ketts-30f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-angry-03_ketts-30f_angry.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts-30m</td>
+            <td><button onclick="play('audios/sentence-angry-03_ketts-30m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-angry-03_ketts-30m_angry.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-20m</td>
+            <td><button onclick="play('audios/sentence-angry-03_ketts2-20m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-angry-03_ketts2-20m_angry.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-30f</td>
+            <td><button onclick="play('audios/sentence-angry-03_ketts2-30f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-angry-03_ketts2-30f_angry.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-40m</td>
+            <td><button onclick="play('audios/sentence-angry-03_ketts2-40m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-angry-03_ketts2-40m_angry.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-50f</td>
+            <td><button onclick="play('audios/sentence-angry-03_ketts2-50f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-angry-03_ketts2-50f_angry.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-50m</td>
+            <td><button onclick="play('audios/sentence-angry-03_ketts2-50m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-angry-03_ketts2-50m_angry.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-60f</td>
+            <td><button onclick="play('audios/sentence-angry-03_ketts2-60f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-angry-03_ketts2-60f_angry.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts3-f</td>
+            <td><button onclick="play('audios/sentence-angry-03_ketts3-f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-angry-03_ketts3-f_angry.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts3-m</td>
+            <td><button onclick="play('audios/sentence-angry-03_ketts3-m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-angry-03_ketts3-m_angry.wav');">Play</button></td>
+          </tr>
+        </table>
+
+      </div>
+    </div>
+
+    <p>
+      [<a href="#neutral"><b>Neutral sentences</b></a>]
+      [<a href="#angry"><b>Angry sentences</b></a>]
+      [<a href="#disgusted"><b>Disgusted sentences</b></a>]
+      [<a href="#fearful"><b>Fearful sentences</b></a>]
+      [<a href="#happy"><b>Happy sentences</b></a>]
+      [<a href="#sad"><b>Sad sentences</b></a>]
+      [<a href="#surprised"><b>Surprised sentences</b></a>]
+    </p>
+
+    <h2 id="disgusted">Disgusted sentences</h2>
+
+    <div class="row">
+      <div class="column">
+
+        <h3>Disgusted sentence 1</h3>
+
+        <table border="1">
+          <tr>
+            <th class="sentence_cell">Sentence</th>
+            <td class="sentence_cell" colspan="2">나는 정말 이 상황이 너무 싫어.</td>
+          </tr>
+          <tr>
+            <th class="sentence_cell">Pronouncing</th>
+            <td class="sentence_cell" colspan="2">naneun jeongmal i sanghwang-i neomu silh-eo.</td>
+          </tr>
+          <tr>
+            <th class="sentence_cell">Meaning</th>
+            <td class="sentence_cell" colspan="2">I really hate this situation.</td>
+          </tr>
+          <tr>
+            <th class="speaker_cell" rowspan=2>Speaker</th>
+            <th class="emotion_cell" colspan="2">Emotion</th>
+          </tr>
+          <tr>
+            <th class="emotion_cell">Neutral</th>
+            <th class="emotion_cell">Disgust</th>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts-30f</td>
+            <td><button onclick="play('audios/sentence-disgusted-01_ketts-30f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-disgusted-01_ketts-30f_disgusted.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts-30m</td>
+            <td><button onclick="play('audios/sentence-disgusted-01_ketts-30m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-disgusted-01_ketts-30m_disgusted.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-20m</td>
+            <td><button onclick="play('audios/sentence-disgusted-01_ketts2-20m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-disgusted-01_ketts2-20m_disgusted.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-30f</td>
+            <td><button onclick="play('audios/sentence-disgusted-01_ketts2-30f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-disgusted-01_ketts2-30f_disgusted.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-40m</td>
+            <td><button onclick="play('audios/sentence-disgusted-01_ketts2-40m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-disgusted-01_ketts2-40m_disgusted.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-50f</td>
+            <td><button onclick="play('audios/sentence-disgusted-01_ketts2-50f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-disgusted-01_ketts2-50f_disgusted.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-50m</td>
+            <td><button onclick="play('audios/sentence-disgusted-01_ketts2-50m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-disgusted-01_ketts2-50m_disgusted.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-60f</td>
+            <td><button onclick="play('audios/sentence-disgusted-01_ketts2-60f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-disgusted-01_ketts2-60f_disgusted.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts3-f</td>
+            <td><button onclick="play('audios/sentence-disgusted-01_ketts3-f_neutral.wav');">Play</button></td>
+            <td class="notrainingdata_cell"><button onclick="play('audios/sentence-disgusted-01_ketts3-f_disgusted.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts3-m</td>
+            <td><button onclick="play('audios/sentence-disgusted-01_ketts3-m_neutral.wav');">Play</button></td>
+            <td class="notrainingdata_cell"><button onclick="play('audios/sentence-disgusted-01_ketts3-m_disgusted.wav');">Play</button></td>
+          </tr>
+        </table>
+
+      </div>
+      <div class="column">
+
+        <h3>Disgusted sentence 2</h3>
+
+        <table border="1">
+          <tr>
+            <th class="sentence_cell">Sentence</th>
+            <td class="sentence_cell" colspan="2">이 쓰레기 통은 왜 이렇게 더럽지?</td>
+          </tr>
+          <tr>
+            <th class="sentence_cell">Pronouncing</th>
+            <td class="sentence_cell" colspan="2">i sseulegi tong-eun wae ileohge deoleobji?</td>
+          </tr>
+          <tr>
+            <th class="sentence_cell">Meaning</th>
+            <td class="sentence_cell" colspan="2">Why is this trash can so dirty?</td>
+          </tr>
+          <tr>
+            <th class="speaker_cell" rowspan=2>Speaker</th>
+            <th class="emotion_cell" colspan="2">Emotion</th>
+          </tr>
+          <tr>
+            <th class="emotion_cell">Neutral</th>
+            <th class="emotion_cell">Disgust</th>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts-30f</td>
+            <td><button onclick="play('audios/sentence-disgusted-02_ketts-30f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-disgusted-02_ketts-30f_disgusted.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts-30m</td>
+            <td><button onclick="play('audios/sentence-disgusted-02_ketts-30m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-disgusted-02_ketts-30m_disgusted.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-20m</td>
+            <td><button onclick="play('audios/sentence-disgusted-02_ketts2-20m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-disgusted-02_ketts2-20m_disgusted.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-30f</td>
+            <td><button onclick="play('audios/sentence-disgusted-02_ketts2-30f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-disgusted-02_ketts2-30f_disgusted.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-40m</td>
+            <td><button onclick="play('audios/sentence-disgusted-02_ketts2-40m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-disgusted-02_ketts2-40m_disgusted.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-50f</td>
+            <td><button onclick="play('audios/sentence-disgusted-02_ketts2-50f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-disgusted-02_ketts2-50f_disgusted.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-50m</td>
+            <td><button onclick="play('audios/sentence-disgusted-02_ketts2-50m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-disgusted-02_ketts2-50m_disgusted.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-60f</td>
+            <td><button onclick="play('audios/sentence-disgusted-02_ketts2-60f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-disgusted-02_ketts2-60f_disgusted.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts3-f</td>
+            <td><button onclick="play('audios/sentence-disgusted-02_ketts3-f_neutral.wav');">Play</button></td>
+            <td class="notrainingdata_cell"><button onclick="play('audios/sentence-disgusted-02_ketts3-f_disgusted.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts3-m</td>
+            <td><button onclick="play('audios/sentence-disgusted-02_ketts3-m_neutral.wav');">Play</button></td>
+            <td class="notrainingdata_cell"><button onclick="play('audios/sentence-disgusted-02_ketts3-m_disgusted.wav');">Play</button></td>
+          </tr>
+        </table>
+
+      </div>
+      <div class="column">
+
+        <h3>Disgusted sentence 3</h3>
+
+        <table border="1">
+          <tr>
+            <th class="sentence_cell">Sentence</th>
+            <td class="sentence_cell" colspan="2">이 음식은 정말 맛이 없다.</td>
+          </tr>
+          <tr>
+            <th class="sentence_cell">Pronouncing</th>
+            <td class="sentence_cell" colspan="2"> eumsig-eun jeongmal mas-i eobsda.</td>
+          </tr>
+          <tr>
+            <th class="sentence_cell">Meaning</th>
+            <td class="sentence_cell" colspan="2">This food is really tasteless.</td>
+          </tr>
+          <tr>
+            <th class="speaker_cell" rowspan=2>Speaker</th>
+            <th class="emotion_cell" colspan="2">Emotion</th>
+          </tr>
+          <tr>
+            <th class="emotion_cell">Neutral</th>
+            <th class="emotion_cell">Disgust</th>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts-30f</td>
+            <td><button onclick="play('audios/sentence-disgusted-03_ketts-30f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-disgusted-03_ketts-30f_disgusted.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts-30m</td>
+            <td><button onclick="play('audios/sentence-disgusted-03_ketts-30m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-disgusted-03_ketts-30m_disgusted.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-20m</td>
+            <td><button onclick="play('audios/sentence-disgusted-03_ketts2-20m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-disgusted-03_ketts2-20m_disgusted.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-30f</td>
+            <td><button onclick="play('audios/sentence-disgusted-03_ketts2-30f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-disgusted-03_ketts2-30f_disgusted.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-40m</td>
+            <td><button onclick="play('audios/sentence-disgusted-03_ketts2-40m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-disgusted-03_ketts2-40m_disgusted.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-50f</td>
+            <td><button onclick="play('audios/sentence-disgusted-03_ketts2-50f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-disgusted-03_ketts2-50f_disgusted.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-50m</td>
+            <td><button onclick="play('audios/sentence-disgusted-03_ketts2-50m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-disgusted-03_ketts2-50m_disgusted.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-60f</td>
+            <td><button onclick="play('audios/sentence-disgusted-03_ketts2-60f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-disgusted-03_ketts2-60f_disgusted.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts3-f</td>
+            <td><button onclick="play('audios/sentence-disgusted-03_ketts3-f_neutral.wav');">Play</button></td>
+            <td class="notrainingdata_cell"><button onclick="play('audios/sentence-disgusted-03_ketts3-f_disgusted.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts3-m</td>
+            <td><button onclick="play('audios/sentence-disgusted-03_ketts3-m_neutral.wav');">Play</button></td>
+            <td class="notrainingdata_cell"><button onclick="play('audios/sentence-disgusted-03_ketts3-m_disgusted.wav');">Play</button></td>
+          </tr>
+        </table>
+
+      </div>
+    </div>
+
+    <p>
+      [<a href="#neutral"><b>Neutral sentences</b></a>]
+      [<a href="#angry"><b>Angry sentences</b></a>]
+      [<a href="#disgusted"><b>Disgusted sentences</b></a>]
+      [<a href="#fearful"><b>Fearful sentences</b></a>]
+      [<a href="#happy"><b>Happy sentences</b></a>]
+      [<a href="#sad"><b>Sad sentences</b></a>]
+      [<a href="#surprised"><b>Surprised sentences</b></a>]
+    </p>
+
+    <h2 id="fearful">Fearful sentences</h2>
+
+    <div class="row">
+      <div class="column">
+
+        <h3>Fearful sentence 1</h3>
+
+        <table border="1">
+          <tr>
+            <th class="sentence_cell">Sentence</th>
+            <td class="sentence_cell" colspan="2">나는 정말 이 상황이 너무 무서워.</td>
+          </tr>
+          <tr>
+            <th class="sentence_cell">Pronouncing</th>
+            <td class="sentence_cell" colspan="2">naneun jeongmal i sanghwang-i neomu museowo.</td>
+          </tr>
+          <tr>
+            <th class="sentence_cell">Meaning</th>
+            <td class="sentence_cell" colspan="2">I am really scared of this situation.</td>
+          </tr>
+          <tr>
+            <th class="speaker_cell" rowspan=2>Speaker</th>
+            <th class="emotion_cell" colspan="2">Emotion</th>
+          </tr>
+          <tr>
+            <th class="emotion_cell">Neutral</th>
+            <th class="emotion_cell">Fear</th>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts-30f</td>
+            <td><button onclick="play('audios/sentence-fearful-01_ketts-30f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-fearful-01_ketts-30f_fearful.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts-30m</td>
+            <td><button onclick="play('audios/sentence-fearful-01_ketts-30m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-fearful-01_ketts-30m_fearful.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-20m</td>
+            <td><button onclick="play('audios/sentence-fearful-01_ketts2-20m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-fearful-01_ketts2-20m_fearful.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-30f</td>
+            <td><button onclick="play('audios/sentence-fearful-01_ketts2-30f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-fearful-01_ketts2-30f_fearful.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-40m</td>
+            <td><button onclick="play('audios/sentence-fearful-01_ketts2-40m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-fearful-01_ketts2-40m_fearful.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-50f</td>
+            <td><button onclick="play('audios/sentence-fearful-01_ketts2-50f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-fearful-01_ketts2-50f_fearful.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-50m</td>
+            <td><button onclick="play('audios/sentence-fearful-01_ketts2-50m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-fearful-01_ketts2-50m_fearful.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-60f</td>
+            <td><button onclick="play('audios/sentence-fearful-01_ketts2-60f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-fearful-01_ketts2-60f_fearful.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts3-f</td>
+            <td><button onclick="play('audios/sentence-fearful-01_ketts3-f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-fearful-01_ketts3-f_fearful.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts3-m</td>
+            <td><button onclick="play('audios/sentence-fearful-01_ketts3-m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-fearful-01_ketts3-m_fearful.wav');">Play</button></td>
+          </tr>
+        </table>
+
+      </div>
+      <div class="column">
+
+        <h3>Fearful sentence 2</h3>
+
+        <table border="1">
+          <tr>
+            <th class="sentence_cell">Sentence</th>
+            <td class="sentence_cell" colspan="2">이 영화는 혼자 보기가 무서워.</td>
+          </tr>
+          <tr>
+            <th class="sentence_cell">Pronouncing</th>
+            <td class="sentence_cell" colspan="2">i yeonghwaneun honja bogiga museowo.</td>
+          </tr>
+          <tr>
+            <th class="sentence_cell">Meaning</th>
+            <td class="sentence_cell" colspan="2">This movie is scary to watch alone.</td>
+          </tr>
+          <tr>
+            <th class="speaker_cell" rowspan=2>Speaker</th>
+            <th class="emotion_cell" colspan="2">Emotion</th>
+          </tr>
+          <tr>
+            <th class="emotion_cell">Neutral</th>
+            <th class="emotion_cell">Fear</th>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts-30f</td>
+            <td><button onclick="play('audios/sentence-fearful-02_ketts-30f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-fearful-02_ketts-30f_fearful.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts-30m</td>
+            <td><button onclick="play('audios/sentence-fearful-02_ketts-30m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-fearful-02_ketts-30m_fearful.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-20m</td>
+            <td><button onclick="play('audios/sentence-fearful-02_ketts2-20m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-fearful-02_ketts2-20m_fearful.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-30f</td>
+            <td><button onclick="play('audios/sentence-fearful-02_ketts2-30f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-fearful-02_ketts2-30f_fearful.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-40m</td>
+            <td><button onclick="play('audios/sentence-fearful-02_ketts2-40m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-fearful-02_ketts2-40m_fearful.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-50f</td>
+            <td><button onclick="play('audios/sentence-fearful-02_ketts2-50f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-fearful-02_ketts2-50f_fearful.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-50m</td>
+            <td><button onclick="play('audios/sentence-fearful-02_ketts2-50m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-fearful-02_ketts2-50m_fearful.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-60f</td>
+            <td><button onclick="play('audios/sentence-fearful-02_ketts2-60f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-fearful-02_ketts2-60f_fearful.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts3-f</td>
+            <td><button onclick="play('audios/sentence-fearful-02_ketts3-f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-fearful-02_ketts3-f_fearful.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts3-m</td>
+            <td><button onclick="play('audios/sentence-fearful-02_ketts3-m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-fearful-02_ketts3-m_fearful.wav');">Play</button></td>
+          </tr>
+        </table>
+
+      </div>
+      <div class="column">
+
+        <h3>Fearful sentence 3</h3>
+
+        <table border="1">
+          <tr>
+            <th class="sentence_cell">Sentence</th>
+            <td class="sentence_cell" colspan="2">무서워서 집에 혼자 못 있을 거 같애.</td>
+          </tr>
+          <tr>
+            <th class="sentence_cell">Pronouncing</th>
+            <td class="sentence_cell" colspan="2">museowoseo jib-e honja mos iss-eul geo gat-ae.</td>
+          </tr>
+          <tr>
+            <th class="sentence_cell">Meaning</th>
+            <td class="sentence_cell" colspan="2">I'm scared, so I don't think I can be at home alone.</td>
+          </tr>
+          <tr>
+            <th class="speaker_cell" rowspan=2>Speaker</th>
+            <th class="emotion_cell" colspan="2">Emotion</th>
+          </tr>
+          <tr>
+            <th class="emotion_cell">Neutral</th>
+            <th class="emotion_cell">Fear</th>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts-30f</td>
+            <td><button onclick="play('audios/sentence-fearful-03_ketts-30f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-fearful-03_ketts-30f_fearful.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts-30m</td>
+            <td><button onclick="play('audios/sentence-fearful-03_ketts-30m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-fearful-03_ketts-30m_fearful.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-20m</td>
+            <td><button onclick="play('audios/sentence-fearful-03_ketts2-20m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-fearful-03_ketts2-20m_fearful.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-30f</td>
+            <td><button onclick="play('audios/sentence-fearful-03_ketts2-30f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-fearful-03_ketts2-30f_fearful.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-40m</td>
+            <td><button onclick="play('audios/sentence-fearful-03_ketts2-40m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-fearful-03_ketts2-40m_fearful.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-50f</td>
+            <td><button onclick="play('audios/sentence-fearful-03_ketts2-50f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-fearful-03_ketts2-50f_fearful.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-50m</td>
+            <td><button onclick="play('audios/sentence-fearful-03_ketts2-50m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-fearful-03_ketts2-50m_fearful.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-60f</td>
+            <td><button onclick="play('audios/sentence-fearful-03_ketts2-60f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-fearful-03_ketts2-60f_fearful.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts3-f</td>
+            <td><button onclick="play('audios/sentence-fearful-03_ketts3-f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-fearful-03_ketts3-f_fearful.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts3-m</td>
+            <td><button onclick="play('audios/sentence-fearful-03_ketts3-m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-fearful-03_ketts3-m_fearful.wav');">Play</button></td>
+          </tr>
+        </table>
+
+      </div>
+    </div>
+
+    <p>
+      [<a href="#neutral"><b>Neutral sentences</b></a>]
+      [<a href="#angry"><b>Angry sentences</b></a>]
+      [<a href="#disgusted"><b>Disgusted sentences</b></a>]
+      [<a href="#fearful"><b>Fearful sentences</b></a>]
+      [<a href="#happy"><b>Happy sentences</b></a>]
+      [<a href="#sad"><b>Sad sentences</b></a>]
+      [<a href="#surprised"><b>Surprised sentences</b></a>]
+    </p>
+
+    <h2 id="happy">Happy sentences</h2>
+
+    <div class="row">
+      <div class="column">
+
+        <h3>Happy sentence 1</h3>
+
+        <table border="1">
+          <tr>
+            <th class="sentence_cell">Sentence</th>
+            <td class="sentence_cell" colspan="2">나는 지금 진심으로 행복해.</td>
+          </tr>
+          <tr>
+            <th class="sentence_cell">Pronouncing</th>
+            <td class="sentence_cell" colspan="2">naneun jigeum jinsim-eulo haengboghae.</td>
+          </tr>
+          <tr>
+            <th class="sentence_cell">Meaning</th>
+            <td class="sentence_cell" colspan="2">I am truly happy now.</td>
+          </tr>
+          <tr>
+            <th class="speaker_cell" rowspan=2>Speaker</th>
+            <th class="emotion_cell" colspan="2">Emotion</th>
+          </tr>
+          <tr>
+            <th class="emotion_cell">Neutral</th>
+            <th class="emotion_cell">Happiness</th>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts-30f</td>
+            <td><button onclick="play('audios/sentence-happy-01_ketts-30f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-happy-01_ketts-30f_happy.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts-30m</td>
+            <td><button onclick="play('audios/sentence-happy-01_ketts-30m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-happy-01_ketts-30m_happy.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-20m</td>
+            <td><button onclick="play('audios/sentence-happy-01_ketts2-20m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-happy-01_ketts2-20m_happy.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-30f</td>
+            <td><button onclick="play('audios/sentence-happy-01_ketts2-30f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-happy-01_ketts2-30f_happy.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-40m</td>
+            <td><button onclick="play('audios/sentence-happy-01_ketts2-40m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-happy-01_ketts2-40m_happy.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-50f</td>
+            <td><button onclick="play('audios/sentence-happy-01_ketts2-50f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-happy-01_ketts2-50f_happy.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-50m</td>
+            <td><button onclick="play('audios/sentence-happy-01_ketts2-50m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-happy-01_ketts2-50m_happy.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-60f</td>
+            <td><button onclick="play('audios/sentence-happy-01_ketts2-60f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-happy-01_ketts2-60f_happy.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts3-f</td>
+            <td><button onclick="play('audios/sentence-happy-01_ketts3-f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-happy-01_ketts3-f_happy.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts3-m</td>
+            <td><button onclick="play('audios/sentence-happy-01_ketts3-m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-happy-01_ketts3-m_happy.wav');">Play</button></td>
+          </tr>
+        </table>
+
+      </div>
+      <div class="column">
+
+        <h3>Happy sentence 2</h3>
+
+        <table border="1">
+          <tr>
+            <th class="sentence_cell">Sentence</th>
+            <td class="sentence_cell" colspan="2">내 생일에 모두 이렇게 와줘서 고마워.</td>
+          </tr>
+          <tr>
+            <th class="sentence_cell">Pronouncing</th>
+            <td class="sentence_cell" colspan="2">nae saeng-il-e modu ileohge wajwoseo gomawo.</td>
+          </tr>
+          <tr>
+            <th class="sentence_cell">Meaning</th>
+            <td class="sentence_cell" colspan="2">Thanks for all coming this way on my birthday.</td>
+          </tr>
+          <tr>
+            <th class="speaker_cell" rowspan=2>Speaker</th>
+            <th class="emotion_cell" colspan="2">Emotion</th>
+          </tr>
+          <tr>
+            <th class="emotion_cell">Neutral</th>
+            <th class="emotion_cell">Happiness</th>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts-30f</td>
+            <td><button onclick="play('audios/sentence-happy-02_ketts-30f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-happy-02_ketts-30f_happy.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts-30m</td>
+            <td><button onclick="play('audios/sentence-happy-02_ketts-30m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-happy-02_ketts-30m_happy.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-20m</td>
+            <td><button onclick="play('audios/sentence-happy-02_ketts2-20m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-happy-02_ketts2-20m_happy.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-30f</td>
+            <td><button onclick="play('audios/sentence-happy-02_ketts2-30f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-happy-02_ketts2-30f_happy.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-40m</td>
+            <td><button onclick="play('audios/sentence-happy-02_ketts2-40m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-happy-02_ketts2-40m_happy.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-50f</td>
+            <td><button onclick="play('audios/sentence-happy-02_ketts2-50f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-happy-02_ketts2-50f_happy.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-50m</td>
+            <td><button onclick="play('audios/sentence-happy-02_ketts2-50m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-happy-02_ketts2-50m_happy.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-60f</td>
+            <td><button onclick="play('audios/sentence-happy-02_ketts2-60f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-happy-02_ketts2-60f_happy.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts3-f</td>
+            <td><button onclick="play('audios/sentence-happy-02_ketts3-f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-happy-02_ketts3-f_happy.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts3-m</td>
+            <td><button onclick="play('audios/sentence-happy-02_ketts3-m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-happy-02_ketts3-m_happy.wav');">Play</button></td>
+          </tr>
+        </table>
+
+      </div>
+      <div class="column">
+
+        <h3>Happy sentence 3</h3>
+
+        <table border="1">
+          <tr>
+            <th class="sentence_cell">Sentence</th>
+            <td class="sentence_cell" colspan="2">오늘 날씨는 올해 중 최고야.</td>
+          </tr>
+          <tr>
+            <th class="sentence_cell">Pronouncing</th>
+            <td class="sentence_cell" colspan="2">oneul nalssineun olhae jung choegoya.</td>
+          </tr>
+          <tr>
+            <th class="sentence_cell">Meaning</th>
+            <td class="sentence_cell" colspan="2">The weather today is the best of the year.</td>
+          </tr>
+          <tr>
+            <th class="speaker_cell" rowspan=2>Speaker</th>
+            <th class="emotion_cell" colspan="2">Emotion</th>
+          </tr>
+          <tr>
+            <th class="emotion_cell">Neutral</th>
+            <th class="emotion_cell">Happiness</th>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts-30f</td>
+            <td><button onclick="play('audios/sentence-happy-03_ketts-30f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-happy-03_ketts-30f_happy.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts-30m</td>
+            <td><button onclick="play('audios/sentence-happy-03_ketts-30m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-happy-03_ketts-30m_happy.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-20m</td>
+            <td><button onclick="play('audios/sentence-happy-03_ketts2-20m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-happy-03_ketts2-20m_happy.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-30f</td>
+            <td><button onclick="play('audios/sentence-happy-03_ketts2-30f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-happy-03_ketts2-30f_happy.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-40m</td>
+            <td><button onclick="play('audios/sentence-happy-03_ketts2-40m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-happy-03_ketts2-40m_happy.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-50f</td>
+            <td><button onclick="play('audios/sentence-happy-03_ketts2-50f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-happy-03_ketts2-50f_happy.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-50m</td>
+            <td><button onclick="play('audios/sentence-happy-03_ketts2-50m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-happy-03_ketts2-50m_happy.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-60f</td>
+            <td><button onclick="play('audios/sentence-happy-03_ketts2-60f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-happy-03_ketts2-60f_happy.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts3-f</td>
+            <td><button onclick="play('audios/sentence-happy-03_ketts3-f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-happy-03_ketts3-f_happy.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts3-m</td>
+            <td><button onclick="play('audios/sentence-happy-03_ketts3-m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-happy-03_ketts3-m_happy.wav');">Play</button></td>
+          </tr>
+        </table>
+
+      </div>
+    </div>
+
+    <p>
+      [<a href="#neutral"><b>Neutral sentences</b></a>]
+      [<a href="#angry"><b>Angry sentences</b></a>]
+      [<a href="#disgusted"><b>Disgusted sentences</b></a>]
+      [<a href="#fearful"><b>Fearful sentences</b></a>]
+      [<a href="#happy"><b>Happy sentences</b></a>]
+      [<a href="#sad"><b>Sad sentences</b></a>]
+      [<a href="#surprised"><b>Surprised sentences</b></a>]
+    </p>
+
+    <h2 id="sad">Sad sentences</h2>
+
+    <div class="row">
+      <div class="column">
+
+        <h3>Sad sentence 1</h3>
+
+        <table border="1">
+          <tr>
+            <th class="sentence_cell">Sentence</th>
+            <td class="sentence_cell" colspan="2">나는 지금 정말 슬퍼.</td>
+          </tr>
+          <tr>
+            <th class="sentence_cell">Pronouncing</th>
+            <td class="sentence_cell" colspan="2">naneun jigeum jeongmal seulpeo.</td>
+          </tr>
+          <tr>
+            <th class="sentence_cell">Meaning</th>
+            <td class="sentence_cell" colspan="2">I am really sad now.</td>
+          </tr>
+          <tr>
+            <th class="speaker_cell" rowspan=2>Speaker</th>
+            <th class="emotion_cell" colspan="2">Emotion</th>
+          </tr>
+          <tr>
+            <th class="emotion_cell">Neutral</th>
+            <th class="emotion_cell">Sadness</th>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts-30f</td>
+            <td><button onclick="play('audios/sentence-sad-01_ketts-30f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-sad-01_ketts-30f_sad.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts-30m</td>
+            <td><button onclick="play('audios/sentence-sad-01_ketts-30m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-sad-01_ketts-30m_sad.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-20m</td>
+            <td><button onclick="play('audios/sentence-sad-01_ketts2-20m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-sad-01_ketts2-20m_sad.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-30f</td>
+            <td><button onclick="play('audios/sentence-sad-01_ketts2-30f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-sad-01_ketts2-30f_sad.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-40m</td>
+            <td><button onclick="play('audios/sentence-sad-01_ketts2-40m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-sad-01_ketts2-40m_sad.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-50f</td>
+            <td><button onclick="play('audios/sentence-sad-01_ketts2-50f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-sad-01_ketts2-50f_sad.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-50m</td>
+            <td><button onclick="play('audios/sentence-sad-01_ketts2-50m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-sad-01_ketts2-50m_sad.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-60f</td>
+            <td><button onclick="play('audios/sentence-sad-01_ketts2-60f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-sad-01_ketts2-60f_sad.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts3-f</td>
+            <td><button onclick="play('audios/sentence-sad-01_ketts3-f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-sad-01_ketts3-f_sad.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts3-m</td>
+            <td><button onclick="play('audios/sentence-sad-01_ketts3-m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-sad-01_ketts3-m_sad.wav');">Play</button></td>
+          </tr>
+        </table>
+
+      </div>
+      <div class="column">
+
+        <h3>Sad sentence 2</h3>
+
+        <table border="1">
+          <tr>
+            <th class="sentence_cell">Sentence</th>
+            <td class="sentence_cell" colspan="2">오늘 날씨가 너무 흐려서 우울해.</td>
+          </tr>
+          <tr>
+            <th class="sentence_cell">Pronouncing</th>
+            <td class="sentence_cell" colspan="2">oneul nalssiga neomu heulyeoseo uulhae.</td>
+          </tr>
+          <tr>
+            <th class="sentence_cell">Meaning</th>
+            <td class="sentence_cell" colspan="2">It’s so cloudy today that I’m depressed.</td>
+          </tr>
+          <tr>
+            <th class="speaker_cell" rowspan=2>Speaker</th>
+            <th class="emotion_cell" colspan="2">Emotion</th>
+          </tr>
+          <tr>
+            <th class="emotion_cell">Neutral</th>
+            <th class="emotion_cell">Sadness</th>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts-30f</td>
+            <td><button onclick="play('audios/sentence-sad-02_ketts-30f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-sad-02_ketts-30f_sad.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts-30m</td>
+            <td><button onclick="play('audios/sentence-sad-02_ketts-30m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-sad-02_ketts-30m_sad.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-20m</td>
+            <td><button onclick="play('audios/sentence-sad-02_ketts2-20m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-sad-02_ketts2-20m_sad.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-30f</td>
+            <td><button onclick="play('audios/sentence-sad-02_ketts2-30f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-sad-02_ketts2-30f_sad.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-40m</td>
+            <td><button onclick="play('audios/sentence-sad-02_ketts2-40m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-sad-02_ketts2-40m_sad.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-50f</td>
+            <td><button onclick="play('audios/sentence-sad-02_ketts2-50f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-sad-02_ketts2-50f_sad.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-50m</td>
+            <td><button onclick="play('audios/sentence-sad-02_ketts2-50m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-sad-02_ketts2-50m_sad.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-60f</td>
+            <td><button onclick="play('audios/sentence-sad-02_ketts2-60f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-sad-02_ketts2-60f_sad.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts3-f</td>
+            <td><button onclick="play('audios/sentence-sad-02_ketts3-f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-sad-02_ketts3-f_sad.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts3-m</td>
+            <td><button onclick="play('audios/sentence-sad-02_ketts3-m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-sad-02_ketts3-m_sad.wav');">Play</button></td>
+          </tr>
+        </table>
+
+      </div>
+      <div class="column">
+
+        <h3>Sad sentence 3</h3>
+
+        <table border="1">
+          <tr>
+            <th class="sentence_cell">Sentence</th>
+            <td class="sentence_cell" colspan="2">어제 선물 못 사줘서 미안해.</td>
+          </tr>
+          <tr>
+            <th class="sentence_cell">Pronouncing</th>
+            <td class="sentence_cell" colspan="2">eoje seonmul mos sajwoseo mianhae.</td>
+          </tr>
+          <tr>
+            <th class="sentence_cell">Meaning</th>
+            <td class="sentence_cell" colspan="2">I'm sorry I couldn't buy you a present yesterday.</td>
+          </tr>
+          <tr>
+            <th class="speaker_cell" rowspan=2>Speaker</th>
+            <th class="emotion_cell" colspan="2">Emotion</th>
+          </tr>
+          <tr>
+            <th class="emotion_cell">Neutral</th>
+            <th class="emotion_cell">Sadness</th>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts-30f</td>
+            <td><button onclick="play('audios/sentence-sad-03_ketts-30f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-sad-03_ketts-30f_sad.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts-30m</td>
+            <td><button onclick="play('audios/sentence-sad-03_ketts-30m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-sad-03_ketts-30m_sad.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-20m</td>
+            <td><button onclick="play('audios/sentence-sad-03_ketts2-20m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-sad-03_ketts2-20m_sad.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-30f</td>
+            <td><button onclick="play('audios/sentence-sad-03_ketts2-30f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-sad-03_ketts2-30f_sad.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-40m</td>
+            <td><button onclick="play('audios/sentence-sad-03_ketts2-40m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-sad-03_ketts2-40m_sad.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-50f</td>
+            <td><button onclick="play('audios/sentence-sad-03_ketts2-50f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-sad-03_ketts2-50f_sad.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-50m</td>
+            <td><button onclick="play('audios/sentence-sad-03_ketts2-50m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-sad-03_ketts2-50m_sad.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-60f</td>
+            <td><button onclick="play('audios/sentence-sad-03_ketts2-60f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-sad-03_ketts2-60f_sad.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts3-f</td>
+            <td><button onclick="play('audios/sentence-sad-03_ketts3-f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-sad-03_ketts3-f_sad.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts3-m</td>
+            <td><button onclick="play('audios/sentence-sad-03_ketts3-m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-sad-03_ketts3-m_sad.wav');">Play</button></td>
+          </tr>
+        </table>
+
+      </div>
+    </div>
+
+    <p>
+      [<a href="#neutral"><b>Neutral sentences</b></a>]
+      [<a href="#angry"><b>Angry sentences</b></a>]
+      [<a href="#disgusted"><b>Disgusted sentences</b></a>]
+      [<a href="#fearful"><b>Fearful sentences</b></a>]
+      [<a href="#happy"><b>Happy sentences</b></a>]
+      [<a href="#sad"><b>Sad sentences</b></a>]
+      [<a href="#surprised"><b>Surprised sentences</b></a>]
+    </p>
+
+    <h2 id="surprised">Surprised sentences</h2>
+
+    <div class="row">
+      <div class="column">
+
+        <h3>Surprised sentence 1</h3>
+
+        <table border="1">
+          <tr>
+            <th class="sentence_cell">Sentence</th>
+            <td class="sentence_cell" colspan="2">너가 갑자기 말을 걸어서 깜짝 놀랐어.</td>
+          </tr>
+          <tr>
+            <th class="sentence_cell">Pronouncing</th>
+            <td class="sentence_cell" colspan="2">neoga gabjagi mal-eul geol-eoseo kkamjjag nollass-eo.</td>
+          </tr>
+          <tr>
+            <th class="sentence_cell">Meaning</th>
+            <td class="sentence_cell" colspan="2">You suddenly talked and were startled.</td>
+          </tr>
+          <tr>
+            <th class="speaker_cell" rowspan=2>Speaker</th>
+            <th class="emotion_cell" colspan="2">Emotion</th>
+          </tr>
+          <tr>
+            <th class="emotion_cell">Neutral</th>
+            <th class="emotion_cell">Surprise</th>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts-30f</td>
+            <td><button onclick="play('audios/sentence-surprised-01_ketts-30f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-surprised-01_ketts-30f_surprised.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts-30m</td>
+            <td><button onclick="play('audios/sentence-surprised-01_ketts-30m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-surprised-01_ketts-30m_surprised.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-20m</td>
+            <td><button onclick="play('audios/sentence-surprised-01_ketts2-20m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-surprised-01_ketts2-20m_surprised.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-30f</td>
+            <td><button onclick="play('audios/sentence-surprised-01_ketts2-30f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-surprised-01_ketts2-30f_surprised.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-40m</td>
+            <td><button onclick="play('audios/sentence-surprised-01_ketts2-40m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-surprised-01_ketts2-40m_surprised.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-50f</td>
+            <td><button onclick="play('audios/sentence-surprised-01_ketts2-50f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-surprised-01_ketts2-50f_surprised.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-50m</td>
+            <td><button onclick="play('audios/sentence-surprised-01_ketts2-50m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-surprised-01_ketts2-50m_surprised.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-60f</td>
+            <td><button onclick="play('audios/sentence-surprised-01_ketts2-60f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-surprised-01_ketts2-60f_surprised.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts3-f</td>
+            <td><button onclick="play('audios/sentence-surprised-01_ketts3-f_neutral.wav');">Play</button></td>
+            <td class="notrainingdata_cell"><button onclick="play('audios/sentence-surprised-01_ketts3-f_surprised.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts3-m</td>
+            <td><button onclick="play('audios/sentence-surprised-01_ketts3-m_neutral.wav');">Play</button></td>
+            <td class="notrainingdata_cell"><button onclick="play('audios/sentence-surprised-01_ketts3-m_surprised.wav');">Play</button></td>
+          </tr>
+        </table>
+
+      </div>
+      <div class="column">
+
+        <h3>Surprised sentence 2</h3>
+
+        <table border="1">
+          <tr>
+            <th class="sentence_cell">Sentence</th>
+            <td class="sentence_cell" colspan="2">너 정말 그 회사에 합격한거야?</td>
+          </tr>
+          <tr>
+            <th class="sentence_cell">Pronouncing</th>
+            <td class="sentence_cell" colspan="2">neo jeongmal geu hoesa-e habgyeoghangeoya?</td>
+          </tr>
+          <tr>
+            <th class="sentence_cell">Meaning</th>
+            <td class="sentence_cell" colspan="2">Did you really get into that company?</td>
+          </tr>
+          <tr>
+            <th class="speaker_cell" rowspan=2>Speaker</th>
+            <th class="emotion_cell" colspan="2">Emotion</th>
+          </tr>
+          <tr>
+            <th class="emotion_cell">Neutral</th>
+            <th class="emotion_cell">Surprise</th>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts-30f</td>
+            <td><button onclick="play('audios/sentence-surprised-02_ketts-30f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-surprised-02_ketts-30f_surprised.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts-30m</td>
+            <td><button onclick="play('audios/sentence-surprised-02_ketts-30m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-surprised-02_ketts-30m_surprised.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-20m</td>
+            <td><button onclick="play('audios/sentence-surprised-02_ketts2-20m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-surprised-02_ketts2-20m_surprised.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-30f</td>
+            <td><button onclick="play('audios/sentence-surprised-02_ketts2-30f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-surprised-02_ketts2-30f_surprised.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-40m</td>
+            <td><button onclick="play('audios/sentence-surprised-02_ketts2-40m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-surprised-02_ketts2-40m_surprised.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-50f</td>
+            <td><button onclick="play('audios/sentence-surprised-02_ketts2-50f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-surprised-02_ketts2-50f_surprised.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-50m</td>
+            <td><button onclick="play('audios/sentence-surprised-02_ketts2-50m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-surprised-02_ketts2-50m_surprised.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-60f</td>
+            <td><button onclick="play('audios/sentence-surprised-02_ketts2-60f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-surprised-02_ketts2-60f_surprised.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts3-f</td>
+            <td><button onclick="play('audios/sentence-surprised-02_ketts3-f_neutral.wav');">Play</button></td>
+            <td class="notrainingdata_cell"><button onclick="play('audios/sentence-surprised-02_ketts3-f_surprised.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts3-m</td>
+            <td><button onclick="play('audios/sentence-surprised-02_ketts3-m_neutral.wav');">Play</button></td>
+            <td class="notrainingdata_cell"><button onclick="play('audios/sentence-surprised-02_ketts3-m_surprised.wav');">Play</button></td>
+          </tr>
+        </table>
+
+      </div>
+      <div class="column">
+
+        <h3>Surprised sentence 3</h3>
+
+        <table border="1">
+          <tr>
+            <th class="sentence_cell">Sentence</th>
+            <td class="sentence_cell" colspan="2">진짜 이렇게 비싼 차를 산거야?</td>
+          </tr>
+          <tr>
+            <th class="sentence_cell">Pronouncing</th>
+            <td class="sentence_cell" colspan="2">jinjja ileohge bissan chaleul sangeoya?</td>
+          </tr>
+          <tr>
+            <th class="sentence_cell">Meaning</th>
+            <td class="sentence_cell" colspan="2">Did you really buy this expensive car?</td>
+          </tr>
+          <tr>
+            <th class="speaker_cell" rowspan=2>Speaker</th>
+            <th class="emotion_cell" colspan="2">Emotion</th>
+          </tr>
+          <tr>
+            <th class="emotion_cell">Neutral</th>
+            <th class="emotion_cell">Surprise</th>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts-30f</td>
+            <td><button onclick="play('audios/sentence-surprised-03_ketts-30f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-surprised-03_ketts-30f_surprised.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts-30m</td>
+            <td><button onclick="play('audios/sentence-surprised-03_ketts-30m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-surprised-03_ketts-30m_surprised.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-20m</td>
+            <td><button onclick="play('audios/sentence-surprised-03_ketts2-20m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-surprised-03_ketts2-20m_surprised.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-30f</td>
+            <td><button onclick="play('audios/sentence-surprised-03_ketts2-30f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-surprised-03_ketts2-30f_surprised.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-40m</td>
+            <td><button onclick="play('audios/sentence-surprised-03_ketts2-40m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-surprised-03_ketts2-40m_surprised.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-50f</td>
+            <td><button onclick="play('audios/sentence-surprised-03_ketts2-50f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-surprised-03_ketts2-50f_surprised.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-50m</td>
+            <td><button onclick="play('audios/sentence-surprised-03_ketts2-50m_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-surprised-03_ketts2-50m_surprised.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts2-60f</td>
+            <td><button onclick="play('audios/sentence-surprised-03_ketts2-60f_neutral.wav');">Play</button></td>
+            <td><button onclick="play('audios/sentence-surprised-03_ketts2-60f_surprised.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts3-f</td>
+            <td><button onclick="play('audios/sentence-surprised-03_ketts3-f_neutral.wav');">Play</button></td>
+            <td class="notrainingdata_cell"><button onclick="play('audios/sentence-surprised-03_ketts3-f_surprised.wav');">Play</button></td>
+          </tr>
+          <tr>
+            <td class="speaker_cell">ketts3-m</td>
+            <td><button onclick="play('audios/sentence-surprised-03_ketts3-m_neutral.wav');">Play</button></td>
+            <td class="notrainingdata_cell"><button onclick="play('audios/sentence-surprised-03_ketts3-m_surprised.wav');">Play</button></td>
+          </tr>
+        </table>
+
+      </div>
+    </div>
+
+    <p>
+      [<a href="#neutral"><b>Neutral sentences</b></a>]
+      [<a href="#angry"><b>Angry sentences</b></a>]
+      [<a href="#disgusted"><b>Disgusted sentences</b></a>]
+      [<a href="#fearful"><b>Fearful sentences</b></a>]
+      [<a href="#happy"><b>Happy sentences</b></a>]
+      [<a href="#sad"><b>Sad sentences</b></a>]
+      [<a href="#surprised"><b>Surprised sentences</b></a>]
+    </p>
+
+    <h2>Acknowledgement</h2>
+    <p>This work was supported by <i>Ministry of Culture, Sports and Tourism</i> and <i>Korea Creative Content Agency</i> [R2019020013, R2020040298].</p>
+  </body>
+</html>
